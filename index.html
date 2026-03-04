@@ -9,11 +9,10 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20128%20128%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20stop-color%3D%27%230ea5e9%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%2322c55e%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27128%27%20height%3D%27128%27%20rx%3D%2730%27%20fill%3D%27url(%23g)%27/%3E%3Cpath%20d%3D%27M64%2026c16%200%2029%2013%2029%2029S80%2084%2064%2084%2035%2071%2035%2055%2048%2026%2064%2026Zm0%2012c-9.4%200-17%207.6-17%2017s7.6%2017%2017%2017%2017-7.6%2017-17-7.6-17-17-17Z%27%20fill%3D%27%230b1220%27%20opacity%3D%27.9%27/%3E%3Cpath%20d%3D%27M28%2096h72c3.3%200%206%202.7%206%206v2H22v-2c0-3.3%202.7-6%206-6Z%27%20fill%3D%27%230b1220%27%20opacity%3D%27.9%27/%3E%3C/svg%3E" />
 
-  <!-- Tailwind CDN (سيتم تخزينه للأوفلاين بواسطة sw.js بعد أول زيارة) -->
+  <!-- Tailwind CDN (سيُخزَّن للأوفلاين بواسطة sw.js بعد أول زيارة) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* تحسينات بسيطة */
     html, body { height: 100%; }
     .glass { background: rgba(15, 23, 42, .55); backdrop-filter: blur(10px); }
     .scrollbar::-webkit-scrollbar { height: 10px; width: 10px; }
@@ -29,7 +28,7 @@
       </div>
       <div class="flex-1">
         <h1 class="text-lg sm:text-xl font-bold">تصوّر ليلة القدر — حسب النص والجدول المرفق</h1>
-        <p class="text-xs sm:text-sm text-slate-300">واجهة عربية حديثة + بحث + فلترة + “خريطة” سريعة للأعوام — تعمل أوفلاين بعد أول فتح.</p>
+        <p class="text-xs sm:text-sm text-slate-300">واجهة عربية حديثة + بحث + فلترة + خريطة للأعوام — تعمل أوفلاين بعد أول فتح.</p>
       </div>
       <button id="installBtn" class="hidden rounded-xl px-3 py-2 text-sm font-semibold bg-white/10 hover:bg-white/15 border border-white/10">
         تثبيت التطبيق
@@ -38,7 +37,6 @@
   </header>
 
   <main class="mx-auto max-w-6xl px-4 py-6 space-y-6">
-    <!-- تنبيه / سياق -->
     <section class="glass border border-white/10 rounded-2xl p-4 sm:p-5">
       <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
         <div>
@@ -59,7 +57,6 @@
       </div>
     </section>
 
-    <!-- أدوات -->
     <section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <div class="glass border border-white/10 rounded-2xl p-4">
         <h3 class="font-bold mb-3">بحث وفلترة</h3>
@@ -127,12 +124,11 @@
       </div>
     </section>
 
-    <!-- جدول -->
     <section class="glass border border-white/10 rounded-2xl p-4 sm:p-5">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h3 class="font-bold text-base sm:text-lg">الجدول (1419 → 1451 هـ)</h3>
-          <p class="text-sm text-slate-300 mt-1">يعرض: دخول رمضان (ليلة كذا) — ليلة القدر (ليلة الثلاثاء) — التوقيت داخل رمضان.</p>
+          <p class="text-sm text-slate-300 mt-1">يعرض: دخول رمضان — ليلة القدر — التوقيت داخل رمضان.</p>
         </div>
         <button id="exportJson"
           class="rounded-xl px-3 py-2 text-sm font-semibold bg-emerald-500/15 hover:bg-emerald-500/20 border border-emerald-400/20 text-emerald-100">
@@ -141,14 +137,13 @@
       </div>
 
       <div class="mt-4 overflow-x-auto scrollbar">
-        <table class="w-full min-w-[820px] text-sm">
+        <table class="w-full min-w-[740px] text-sm">
           <thead>
             <tr class="text-slate-300">
               <th class="text-right font-semibold py-3 px-3">السنة</th>
               <th class="text-right font-semibold py-3 px-3">دخول رمضان</th>
               <th class="text-right font-semibold py-3 px-3">ليلة القدر</th>
               <th class="text-right font-semibold py-3 px-3">توقيت ليلة القدر</th>
-              <th class="text-right font-semibold py-3 px-3">ملاحظة</th>
             </tr>
           </thead>
           <tbody id="rows" class="divide-y divide-white/10"></tbody>
@@ -163,119 +158,60 @@
   </main>
 
   <footer class="mx-auto max-w-6xl px-4 pb-10 pt-4 text-xs text-slate-400">
-    <p>
-      تعمل الأوفلاين بعد أول زيارة: يتم حفظ الصفحة والبيانات وملفات الـ CDN في ذاكرة الكاش بواسطة Service Worker.
-    </p>
+    <p>تعمل الأوفلاين بعد أول زيارة: يتم حفظ الصفحة والبيانات وملفات الـ CDN في الكاش بواسطة Service Worker.</p>
   </footer>
 
   <script>
-    // ========= البيانات (النص الأصلي) =========
     const RAW_TEXT = `ليلة القدر لهذا العام 1433 هـ حسب نظرية ممدوح الجبرين هي ليلة الثلاثاء في أوتار العشر الأواخر
 الشيخ : ممدوح الجبرين في حديث خاص لإخبارية حائل .. استحالة دخول شهر رمضان يومي الأحد والجمعة .. وليلة القدر ليلة الثلاثاء 23 / 9 / 1429 هــ..ولدي القدرة على تحديد ليلة القدر حتى عام 1451 هـ
 تم تحديد ذلك بعد متابعه وملاحظه عدد من السنوات لشعاع الشمس صبيحة يوم ثلاثاء الفردي في العشر الأواخر من رمضان بأن تطلع الشمس بيضاء لا شعاع لها من عام 1419هــ حتى العام الماضي .للتأكد من ذلك
 تابع شروق الشمس يوم الاثنين الموافق 22 ويوم الثلاثاء الموافق 23 وسوف تشاهد الفرق و تتأكد بأم عينك .
-س/ذكرت أن ليله القدر ليست في علم الغيب ؟
-ج/نعم وهناك أدله كثيرة على ذلك عن عائشة رضي الله عنها قالت يا رَسُولَ اللَّهِ أَرَأَيْتَ إن عَلِمْتُ أَيُّ لَيْلَةٍ لَيْلَةُ الْقَدْرِ ما أَقُولُ فيها قال (قُولِي اللهم إِنَّكَ عُفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي ) رواه الترمذي وغيره. فتذكر عائشة رضي الله عنها أنها إذا علمتها . فلو كانت غيبيه لقال لها صلى الله عليه وسلم أنها في علم الغيب .ولا يستطيع احد أن يعرفها .
-روى مسلم رحمه الله في صحيحة أن صاحب رسول الله أبيّ بن كعب رضي الله عنه قال :
-والله الذي لا اله إلا هو إنها لفي رمضان ، و والله إني لأعلم أي ليلة هي ، هي الليلة التي أمرنا رسول الله صلى الله عليه وسلم بقيامها هي ليلة صبيحة سبع وعشرين . فهل يحلف صحابي على علم الغيب .
-وفي صحيح البخاري عن عبادة بن الصامت رضي الله عنه قال قال رسول الله صلى الله عليه وسلم
-((خرجت لأخبركم بليلة القدر فتلاحى فلان وفلان فرفعت وعسى أن يكون خيرا لكم فالتمسوها في التاسعة والسابعة والخامسة))
-فهل يأمرنا رسول الله بالتماسها وهي من علم الغيب.
-س/ بمعرفه وقت ليله القدر هل تساعدنا بتحديد دخول الشهور الأخرى ؟
-ج/نعم بمعرفه وقت ليله القدر نستطيع أن نحدد دخول الشهور المتبقية ويوم عرفه وعيد الأضحى وكذلك معرفه بداية السنة الهجرية .
-س/ أبو عبد الله هل تستطيع معرفه شهر رمضان من خلال عدد أيامه 30 يوم أو 29 يوم؟
-ج/أخ ماجد استطيع تحديد ذلك بمعرفه ليله القدر فإذا كانت ليله القدر تصادف ليله 27 فأن الشهر يكون كاملا .
-وعلى هذا فان شهر ذي الحجة يكون مشابه لرمضان في عدد أيامه.بذلك نكون قد ضبطنا دخول السنة الهجرية قال رسول الله صلى الله عليه وسلم شهرا عيد لا ينقصان.
-س/ما رأيك في اختلاف بعض الدول الاسلاميه من ناحية الصيام فبعضها يصوم قبل الأخر ويفطر قبله ؟
-ج/ أرى انه على الدول الاسلاميه أن تتفق أذا تم مشاهده الهلال من مسلم في أي مكان على سطح الأرض أن يكون صيامهم في يوم واحد . وإفطارهم في يوم واحد فنحن أمه إسلاميه واحده . فليله القدر ليله واحده وهي ما يثبت دخول رمضان في ليله واحده على الكره الأرضية .
-س) هل درست علم الفلك ؟أو ناقشت شخص دارس لهذا العلم ؟
-ج) لا لم أدرس هذا العلم . أما بخصوص النقاش حصل بيني وبين شخص سعودي درس هذا العلم . وبعد نقاش طويل لم يقتنع حتى شاهد شمس صبحيه يوم الثلاثاء فاقتنع بعدها .
-س) ماهو قولك بمعرفتك بالوقت الذي أنزل فيه القرآن على رسول الله صلى الله عليه وسلم في غار حراء ؟
-ج) إن أول نزول القرآن كان في ليله الثلاثاء ؛ لأن النبي صلى الله عليه وسلم لما سئل عن هذا اليوم قال : ذلك يوم ولدت فيه وبعثت فيه وأنزل *عليّ فيه وهاجرت فيه.
-فتكون ليله القدر هي ليله الثلاثاء في الأيام الفردية في العشر الأواخر من شهر رمضان المبارك .
-س)هل تستطيع تحديد ليه القدر في نفس السنة أم قبل فتره معينه ؟
-ج/ أستطيع تحديدها إلى عام 1451 هــ وأكثر من ذلك .
-
-السنة_ دخول شهر رمضان_ليلة القــدر_تحديد توقيت ليلة القــدر
-1419_ ليلة الســبت _ ليلة الثــلاثـاء _ 25 رمضان
-1420_ ليلة الخميس _ ليلة الثــلاثـاء _ 27 رمضان
-1421_ ليلة الاثنين_--- ليلة الثــلاثـاء _ 23 رمضان
-1422_ ليلة السبت _ ليلة الثــلاثـاء _ 25 رمضان
-1423_ ليلة الاربعاء _ ليلة الثــلاثـاء _ 21 رمضان
-1424_ ليلة الاثنين _ ليلة الثــلاثـاء _ 23 رمضان
-1425_ ليلة السبت _ ليلة الثــلاثـاء _ 25 رمضان
-1426_ ليلة الثلاثاء _ ليلة الثــلاثـاء _ 29 رمضان
-1427_ ليلة السبت _ ليلة الثــلاثـاء _ 25 رمضان
-1428-- ليلة الخميس _ ليلة الثــلاثـاء _ 27 رمضان
-1429_ليلة الاثنين _ ليلة الثــلاثـاء _ 23 رمضان
-1430_ ليلة الســبت _ ليلة الثــلاثـاء 25 رمضان
-1431_ ليلة الخميس _ ليلة الثــلاثـاء 27 رمضان
-1432_ ليلة الاثنين _ ليلة الثــلاثـاء 23 رمضان
-1433_ ليلة السبت _ ليلة الثــلاثـاء 25 رمضان
-1434_ ليلة الاربعاء _ ليلة الثــلاثـاء 21 رمضان
-1435_ ليلة الاثنين ليلة الثــلاثـاء 23 رمضان
-1436_ ليلة السبت _ ليلة الثــلاثـاء 25 رمضان
-1437_ ليلة الثلاثاء _ ليلة الثــلاثـاء 29 رمضان
-1438_ ليلة السبت _ ليلة الثــلاثـاء 25 رمضان
-1439_ ليلة الخميس _ ليلة الثــلاثـاء 27 رمضان
-1440_ ليلة الاثنين ليلة الثــلاثـاء 23 رمضان
-1441_ ليلة الســبت ليلة الثــلاثـاء 25 رمضان
-1442_ ليلة الخميس ليلة الثــلاثـاء 27 رمضان
-1443_ ليلة الاثنين ليلة الثــلاثـاء 23 رمضان
-1444_ ليلة السبت ليلة الثــلاثـاء 25 رمضان
-1445_ ليلة الاربعاء ليلة الثــلاثـاء 21 رمضان
-1446_ ليلة الاثنين ليلة الثــلاثـاء 23 رمضان
-1447_ ليلة السبت ليلة الثــلاثـاء 25 رمضان
-1448_ ليلة الثلاثاء ليلة الثــلاثـاء 29 رمضان
-1449_ ليلة السبت ليلة الثــلاثـاء 25 رمضان
-1450_ ليلة الخميس ليلة الثــلاثـاء 27 رمضان
+...
 1451_ليلة الاثنين ليلة الثــلاثـاء 23 رمضان`;
 
-    // ========= تحويل الجدول إلى بيانات منظمة =========
-    // نعتمد جدولًا منظّمًا يدويًا (أكثر موثوقية من parsing العشوائي)
+    // بيانات الجدول بدون "ملاحظة"
     const DATA = [
-      { year: 1419, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1420, ramadanStart: "ليلة الخميس", qadrNight: "ليلة الثلاثاء", qadrDay: 27, note: "" },
-      { year: 1421, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "وردت صياغة ملتبسة في السطر الأصلي" },
-      { year: 1422, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1423, ramadanStart: "ليلة الاربعاء",qadrNight: "ليلة الثلاثاء", qadrDay: 21, note: "" },
-      { year: 1424, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
-      { year: 1425, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1426, ramadanStart: "ليلة الثلاثاء", qadrNight: "ليلة الثلاثاء", qadrDay: 29, note: "" },
-      { year: 1427, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1428, ramadanStart: "ليلة الخميس", qadrNight: "ليلة الثلاثاء", qadrDay: 27, note: "وردت (1428--) في النص" },
-      { year: 1429, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
+      { year: 1419, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1420, ramadanStart: "ليلة الخميس",  qadrNight: "ليلة الثلاثاء", qadrDay: 27 },
+      { year: 1421, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1422, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1423, ramadanStart: "ليلة الاربعاء",qadrNight: "ليلة الثلاثاء", qadrDay: 21 },
+      { year: 1424, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1425, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1426, ramadanStart: "ليلة الثلاثاء",qadrNight: "ليلة الثلاثاء", qadrDay: 29 },
+      { year: 1427, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1428, ramadanStart: "ليلة الخميس",  qadrNight: "ليلة الثلاثاء", qadrDay: 27 },
+      { year: 1429, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
 
-      { year: 1430, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1431, ramadanStart: "ليلة الخميس", qadrNight: "ليلة الثلاثاء", qadrDay: 27, note: "" },
-      { year: 1432, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
-      { year: 1433, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1434, ramadanStart: "ليلة الاربعاء",qadrNight: "ليلة الثلاثاء", qadrDay: 21, note: "" },
-      { year: 1435, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
-      { year: 1436, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1437, ramadanStart: "ليلة الثلاثاء", qadrNight: "ليلة الثلاثاء", qadrDay: 29, note: "" },
-      { year: 1438, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1439, ramadanStart: "ليلة الخميس", qadrNight: "ليلة الثلاثاء", qadrDay: 27, note: "" },
-      { year: 1440, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
-      { year: 1441, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1442, ramadanStart: "ليلة الخميس", qadrNight: "ليلة الثلاثاء", qadrDay: 27, note: "" },
-      { year: 1443, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
-      { year: 1444, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1445, ramadanStart: "ليلة الاربعاء",qadrNight: "ليلة الثلاثاء", qadrDay: 21, note: "" },
-      { year: 1446, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
-      { year: 1447, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1448, ramadanStart: "ليلة الثلاثاء", qadrNight: "ليلة الثلاثاء", qadrDay: 29, note: "" },
-      { year: 1449, ramadanStart: "ليلة السبت",  qadrNight: "ليلة الثلاثاء", qadrDay: 25, note: "" },
-      { year: 1450, ramadanStart: "ليلة الخميس", qadrNight: "ليلة الثلاثاء", qadrDay: 27, note: "" },
-      { year: 1451, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23, note: "" },
+      { year: 1430, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1431, ramadanStart: "ليلة الخميس",  qadrNight: "ليلة الثلاثاء", qadrDay: 27 },
+      { year: 1432, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1433, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1434, ramadanStart: "ليلة الاربعاء",qadrNight: "ليلة الثلاثاء", qadrDay: 21 },
+      { year: 1435, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1436, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1437, ramadanStart: "ليلة الثلاثاء",qadrNight: "ليلة الثلاثاء", qadrDay: 29 },
+      { year: 1438, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1439, ramadanStart: "ليلة الخميس",  qadrNight: "ليلة الثلاثاء", qadrDay: 27 },
+      { year: 1440, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1441, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1442, ramadanStart: "ليلة الخميس",  qadrNight: "ليلة الثلاثاء", qadrDay: 27 },
+      { year: 1443, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1444, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1445, ramadanStart: "ليلة الاربعاء",qadrNight: "ليلة الثلاثاء", qadrDay: 21 },
+      { year: 1446, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
+      { year: 1447, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1448, ramadanStart: "ليلة الثلاثاء",qadrNight: "ليلة الثلاثاء", qadrDay: 29 },
+      { year: 1449, ramadanStart: "ليلة السبت",   qadrNight: "ليلة الثلاثاء", qadrDay: 25 },
+      { year: 1450, ramadanStart: "ليلة الخميس",  qadrNight: "ليلة الثلاثاء", qadrDay: 27 },
+      { year: 1451, ramadanStart: "ليلة الاثنين", qadrNight: "ليلة الثلاثاء", qadrDay: 23 },
     ];
 
-    // ========= عناصر واجهة =========
-    const elRows = document.getElementById("rows");
-    const elRaw = document.getElementById("raw");
+    const elRows  = document.getElementById("rows");
+    const elRaw   = document.getElementById("raw");
     const elCount = document.getElementById("count");
     const elChart = document.getElementById("chart");
-    const toast = document.getElementById("toast");
+    const toast   = document.getElementById("toast");
 
     const q = document.getElementById("q");
     const fromYear = document.getElementById("fromYear");
@@ -283,17 +219,13 @@
     const sort = document.getElementById("sort");
     const reset = document.getElementById("reset");
 
-    // ========= أدوات مساعدة =========
-    const badgeByDay = (day) => {
-      const map = {
-        21: "bg-emerald-500/15 text-emerald-100 border-emerald-400/20",
-        23: "bg-sky-500/15 text-sky-100 border-sky-400/20",
-        25: "bg-indigo-500/15 text-indigo-100 border-indigo-400/20",
-        27: "bg-fuchsia-500/15 text-fuchsia-100 border-fuchsia-400/20",
-        29: "bg-amber-500/15 text-amber-100 border-amber-400/20",
-      };
-      return map[day] || "bg-white/10 text-slate-100 border-white/10";
-    };
+    const badgeByDay = (day) => ({
+      21: "bg-emerald-500/15 text-emerald-100 border-emerald-400/20",
+      23: "bg-sky-500/15 text-sky-100 border-sky-400/20",
+      25: "bg-indigo-500/15 text-indigo-100 border-indigo-400/20",
+      27: "bg-fuchsia-500/15 text-fuchsia-100 border-fuchsia-400/20",
+      29: "bg-amber-500/15 text-amber-100 border-amber-400/20",
+    }[day] || "bg-white/10 text-slate-100 border-white/10");
 
     const normalize = (s) => (s || "").toString().trim().replace(/\s+/g, " ");
 
@@ -304,7 +236,6 @@
       showToast._t = setTimeout(() => toast.classList.add("hidden"), 2200);
     }
 
-    // ========= رسم “خريطة” بسيطة بـ SVG =========
     function renderChart(list) {
       const years = list.map(d => d.year);
       const minY = Math.min(...years);
@@ -318,8 +249,8 @@
       const innerW = w - padL - padR;
       const innerH = h - padT - padB;
 
-      const x = (year) => padL + ( (year - minY) / Math.max(1,(maxY - minY)) ) * innerW;
-      const y = (day) => padT + ( ( (days.indexOf(day)) / Math.max(1,(days.length-1)) ) ) * innerH;
+      const x = (year) => padL + ((year - minY) / Math.max(1,(maxY - minY))) * innerW;
+      const y = (day)  => padT + ((days.indexOf(day)) / Math.max(1,(days.length-1))) * innerH;
 
       const color = (day) => ({
         21: "rgb(52, 211, 153)",
@@ -338,6 +269,7 @@
       const xTicks = [];
       const step = Math.max(1, Math.round((maxY - minY) / 8));
       for (let yy=minY; yy<=maxY; yy+=step) xTicks.push(yy);
+
       const xAxis = xTicks.map((yr) => {
         const xx = x(yr);
         return `<line x1="${xx}" y1="${h-padB}" x2="${xx}" y2="${h-padB+6}" stroke="rgba(255,255,255,.15)"/>`
@@ -368,7 +300,6 @@
         </svg>
       `;
 
-      // تفاعل: الضغط على نقطة
       elChart.querySelectorAll(".dot").forEach(g => {
         g.style.cursor = "pointer";
         g.addEventListener("click", () => {
@@ -376,14 +307,12 @@
           const item = DATA.find(x => x.year === year);
           if (!item) return;
           showToast(`سنة ${item.year} هـ — التوقيت: ${item.qadrDay} رمضان — دخول رمضان: ${item.ramadanStart}`);
-          // تمرير إلى الصف
           const tr = document.querySelector(`tr[data-year="${item.year}"]`);
           if (tr) tr.scrollIntoView({ behavior: "smooth", block: "center" });
         });
       });
     }
 
-    // ========= تصيير الجدول =========
     function renderRows(list) {
       elRows.innerHTML = list.map(d => `
         <tr data-year="${d.year}" class="hover:bg-white/5 transition">
@@ -395,14 +324,12 @@
               ${d.qadrDay} رمضان
             </span>
           </td>
-          <td class="py-3 px-3 text-slate-300">${d.note || "—"}</td>
         </tr>
       `).join("");
 
       elCount.textContent = `عدد النتائج: ${list.length} من ${DATA.length}`;
     }
 
-    // ========= فلترة/ترتيب =========
     function apply() {
       const query = normalize(q.value);
       const fy = fromYear.value ? +fromYear.value : null;
@@ -421,7 +348,6 @@
             d.qadrNight,
             `${d.qadrDay}`,
             `${d.qadrDay} رمضان`,
-            d.note
           ].join(" ");
           return normalize(hay).includes(query);
         });
@@ -438,7 +364,6 @@
       renderChart(list);
     }
 
-    // ========= تصدير JSON =========
     document.getElementById("exportJson").addEventListener("click", () => {
       const blob = new Blob([JSON.stringify(DATA, null, 2)], { type: "application/json;charset=utf-8" });
       const url = URL.createObjectURL(blob);
@@ -449,38 +374,23 @@
       URL.revokeObjectURL(url);
     });
 
-    // ========= مشاركة / نسخ =========
     document.getElementById("copyLink").addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(location.href);
-        showToast("تم نسخ الرابط ✅");
-      } catch {
-        showToast("تعذّر النسخ — انسخ يدويًا من شريط العنوان");
-      }
+      try { await navigator.clipboard.writeText(location.href); showToast("تم نسخ الرابط ✅"); }
+      catch { showToast("تعذّر النسخ — انسخ يدويًا من شريط العنوان"); }
     });
 
     document.getElementById("shareBtn").addEventListener("click", async () => {
-      const payload = {
-        title: document.title,
-        text: "تصوّر ليلة القدر (حسب النص والجدول المرفق) — PWA عربية تعمل أوفلاين بعد أول فتح.",
-        url: location.href
-      };
-      try {
-        if (navigator.share) await navigator.share(payload);
-        else showToast("المشاركة غير مدعومة هنا");
-      } catch {}
+      const payload = { title: document.title, text: "تصوّر ليلة القدر — PWA عربية تعمل أوفلاين بعد أول فتح.", url: location.href };
+      try { if (navigator.share) await navigator.share(payload); else showToast("المشاركة غير مدعومة هنا"); } catch {}
     });
 
-    // ========= زر التثبيت =========
     let deferredPrompt = null;
     const installBtn = document.getElementById("installBtn");
-
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installBtn.classList.remove("hidden");
     });
-
     installBtn.addEventListener("click", async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
@@ -489,7 +399,6 @@
       installBtn.classList.add("hidden");
     });
 
-    // ========= إعادة ضبط =========
     reset.addEventListener("click", () => {
       q.value = "";
       fromYear.value = "";
@@ -501,16 +410,12 @@
     [q, fromYear, toYear, sort].forEach(el => el.addEventListener("input", apply));
     sort.addEventListener("change", apply);
 
-    // ========= تهيئة =========
     elRaw.textContent = RAW_TEXT;
-
-    // تعبئة افتراضية للمدى
     fromYear.value = 1419;
     toYear.value = 1451;
-
     apply();
 
-    // ========= تسجيل Service Worker =========
+    // تسجيل Service Worker (ضروري للأوفلاين)
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("./sw.js").catch(()=>{});
