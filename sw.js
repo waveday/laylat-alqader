@@ -1,9 +1,10 @@
-const CACHE_NAME = "laylat-alqadr-pwa-v2";
+const CACHE_NAME = "laylat-alqadr-pwa-v3";
 const ASSETS = [
   "./",
   "./index.html",
-  "./manifest.webmanifest",
-  "https://cdn.tailwindcss.com"
+  "./styles.css",
+  "./sw.js",
+  "./manifest.webmanifest"
 ];
 
 self.addEventListener("install", (event) => {
