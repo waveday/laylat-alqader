@@ -442,7 +442,7 @@
     });
 
     document.getElementById("shareBtn").addEventListener("click", async () => {
-      const payload = { title: document.title, text: "تصوّر ليلة القدر — PWA عربية تعمل أوفلاين بعد أول فتح.", url: location.href };
+      const payload = { title: document.title, text: "تحديد ليلة القدر — عربية تعمل أوفلاين بعد أول فتح.", url: location.href };
       try { if (navigator.share) await navigator.share(payload); else showToast("المشاركة غير مدعومة هنا"); } catch {}
     });
 
