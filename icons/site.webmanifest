@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "تحديد ليلة القدر",
+  "short_name": "ليلة القدر",
   "icons": [
     {
       "src": "/icons/web-app-manifest-192x192.png",
