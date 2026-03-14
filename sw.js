@@ -1,5 +1,5 @@
 /* sw.js */
-const CACHE_VERSION = "v1.0.0";
+const CACHE_VERSION = "v2.0.0";
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
